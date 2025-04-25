@@ -21,7 +21,7 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <input type="text" placeholder="Phone" id="phone" class="form-control" name="phone"
+                                    <input type="text" placeholder="Phone" id="name" class="form-control" name="phone"
                                            required autofocus>
                                     @if ($errors->has('phone'))
                                         <span class="text-danger">{{ $errors->first('phone') }}</span>
@@ -29,7 +29,7 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <input type="text" placeholder="Address" id="address" class="form-control" name="address"
+                                    <input type="text" placeholder="Address" id="name" class="form-control" name="address"
                                            required autofocus>
                                     @if ($errors->has('address'))
                                         <span class="text-danger">{{ $errors->first('address') }}</span>

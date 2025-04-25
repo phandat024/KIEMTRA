@@ -10,9 +10,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Role</th>
                             <th>Action</th>
-                            
                         </tr>
                     </thead>
                     <tbody>
@@ -21,6 +19,13 @@
                                 <th>{{ $user->id }}</th>
                                 <th>{{ $user->name }}</th>
                                 <th>{{ $user->email }}</th>
+                                <th> 
+                                    @foreach($user->orders as $order)
+                                        <a href="{{ route('user.order', ['id' => $order->id]) }}">
+                                            {{ $order->order_list . '-' }}
+                                        </a>
+                                    @endforeach
+                                </th>
                                 <th>
                                     <a href="{{ route('user.readUser', ['id' => $user->id]) }}">View</a> |
                                     <a href="{{ route('user.updateUser', ['id' => $user->id]) }}">Edit</a> |
@@ -30,7 +35,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                {!! $users->withQueryString()->links('pagination::bootstrap-5') !!}
             </div>
         </div>
     </main>

@@ -6,12 +6,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <div class="card">
-                        <h3 class="card-header text-center">Create User</h3>
+                        <h3 class="card-header text-center">Register User</h3>
                         <div class="card-body">
                             <form action="{{ route('user.postUser') }}" method="POST">
                                 @csrf
-
-
                                 <div class="form-group mb-3">
                                     <input type="text" placeholder="Name" id="name" class="form-control" name="name"
                                            required autofocus>
@@ -19,24 +17,6 @@
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
-
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="Phone" id="phone" class="form-control" name="phone"
-                                           required autofocus>
-                                    @if ($errors->has('phone'))
-                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="Address" id="address" class="form-control" name="address"
-                                           required autofocus>
-                                    @if ($errors->has('address'))
-                                        <span class="text-danger">{{ $errors->first('address') }}</span>
-                                    @endif
-                                </div>
-
-
                                 <div class="form-group mb-3">
                                     <input type="text" placeholder="Email" id="email_address" class="form-control"
                                            name="email" required autofocus>
@@ -51,8 +31,13 @@
                                         <span class="text-danger">{{ $errors->first('password') }}</span>
                                     @endif
                                 </div>
+                                <div class="form-group mb-3">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="remember"> Remember Me</label>
+                                    </div>
+                                </div>
                                 <div class="d-grid mx-auto">
-                                    <button type="submit" class="btn btn-dark btn-block">Submit</button>
+                                    <button type="submit" class="btn btn-dark btn-block">Sign up</button>
                                 </div>
                             </form>
                         </div>
