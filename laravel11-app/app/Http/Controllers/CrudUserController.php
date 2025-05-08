@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Hash;
 use Session;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
  */
 class CrudUserController extends Controller
 {
+
+    const MAX_RECORDS = 10;
 
     /**
      * Login page
@@ -137,13 +140,13 @@ class CrudUserController extends Controller
 //        return view('crud_user.ronaldo', $users);
 
         if(Auth::check()){
-            $users = User::all();
+            $users = User::with('orders','position')->paginate(self::MAX_RECORDS);
             return view('crud_user.list', ['users' => $users]);
         }
 
         return redirect("login")->withSuccess('You are not allowed to access');
     }
-
+    
     /**
      * Sign out
      */

@@ -10,9 +10,10 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Order</th>
+                            <th>Position</th>
                             <th>Role</th>
                             <th>Action</th>
-                            
                         </tr>
                     </thead>
                     <tbody>
@@ -21,6 +22,31 @@
                                 <th>{{ $user->id }}</th>
                                 <th>{{ $user->name }}</th>
                                 <th>{{ $user->email }}</th>
+                           
+                                <th>
+                                @if($user->orders->isNotEmpty())
+            
+                                    @foreach($user->orders as $order)
+                                        
+                                        <a href="{{ route('user.order', ['id' => $user->id]) }}">
+                                            {{ $order->order_name.'-' }}
+                                        </a>
+                                    @endforeach
+            
+                                @else
+                                    <p>Không có đơn hàng nào.</p>
+                                @endif
+                                </th>
+
+                                <th>{{ $user->position->Name}}</th>
+
+                                <th>
+                                    @foreach($user->roles as $role)
+                                        <a href="{{ route('user.role', ['id' => $role->id]) }}">
+                                            {{ $role->name . '-' }}
+                                        </a>
+                                    @endforeach
+                                </th>
                                 <th>
                                     <a href="{{ route('user.readUser', ['id' => $user->id]) }}">View</a> |
                                     <a href="{{ route('user.updateUser', ['id' => $user->id]) }}">Edit</a> |

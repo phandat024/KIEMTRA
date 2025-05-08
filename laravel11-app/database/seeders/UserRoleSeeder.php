@@ -4,12 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class UserRoleSeeder extends Seeder
 {
-    const MAX_RECORDS = 100;
+    const MAX_RECORDS = 50;
     /**
      * Run the database seeds.
      */
@@ -22,10 +20,8 @@ class UserRoleSeeder extends Seeder
                         'role_id' => rand(1,4),
                         'created_at' => now(),
                         'updated_at' => now(),
-            ],
+                ],
             ]);
         }
-
-
     }
 }

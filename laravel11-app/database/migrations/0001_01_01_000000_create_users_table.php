@@ -16,13 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('address');
-            $table->string('email')->unique();
+            $table->string('email', 100)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
-
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
@@ -40,7 +39,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
 };
